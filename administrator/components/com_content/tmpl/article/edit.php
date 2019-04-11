@@ -22,7 +22,7 @@ HTMLHelper::_('behavior.keepalive');
 
 $this->configFieldsets  = array('editorConfig');
 $this->hiddenFieldsets  = array('basic-limited');
-$this->ignore_fieldsets = array('jmetadata', 'item_associations');
+$this->ignore_fieldsets = array('jmetadata', 'item_associations','jseo');
 $this->useCoreUI = true;
 
 // Create shortcut to parameters.
@@ -101,6 +101,18 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			</div>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php endif; ?>
+		
+		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'seo', Text::_('COM_CONTENT_FIELDSET_SEO')); ?>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-light">
+					<div class="card-body">
+						<?php echo LayoutHelper::render('joomla.edit.seo', $this); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
 		<?php if ( ! $isModal && $assoc) : ?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
