@@ -26,9 +26,15 @@ class PlgContentOpenGraph extends CMSPlugin
 	{
 		if (isset($article->title))
 		{
-			$this->app->getDocument()->addCustomTag('<meta property="og:title" content="' . $article->title . '"/>');
-			$this->app->getDocument()->addCustomTag('<meta property="og:type" content=""/>');
-			$this->app->getDocument()->addCustomTag('<meta property="og:type" content="article"/>');
+//			echo "<pre>";
+//			var_dump($article->readmore_link);
+//			echo "</pre>";
+			$this->app->getDocument()->setMetaData('og:title', $article->title, 'property');
+			$this->app->getDocument()->setMetaData('og:type', 'article', 'property');
+		}
+		if (isset($article->readmore_link))
+		{
+			$this->app->getDocument()->setMetaData('og:url', $article->readmore_link, 'property');
 		}
 	}
 }
